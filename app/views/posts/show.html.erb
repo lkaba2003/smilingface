@@ -1,0 +1,14 @@
+<h1>Here is your post</h1>
+
+<em>
+	<strong>Post:</strong> <%= @post.content %><br/>
+	<strong>Create on:</strong> <%= @post.created_at %><br/>
+	<strong>Update on:</strong> <%= @post.updated_at %><br/>
+	<strong>User number:</strong> <%= @post.user_id %><br/>
+	<strong>Post number:</strong> <%= current_user.posts.count %><br/>
+</em>
+
+<%= image_tag @post.image_url.to_s, :width => 200, :class => "right", :style => "margin-left: 300px;" %>
+
+<hr/>
+<%= button_to "Back", posts_path, :method => :get %>

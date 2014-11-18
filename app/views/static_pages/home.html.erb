@@ -1,0 +1,21 @@
+<% if current_user %>
+	<%= link_to "Create New Post", new_post_path %>
+
+	<div>
+		<p>Followed by: <%= current_user.followers.count%></p>
+		<p>Following: <%= current_user.users_followed.count%></p>
+	</div>
+
+<%else%>
+	<center>
+		<h1>Welcome to Smilling Face </h1>
+		<h2>The world largest blogger</h2>
+		<h3>We have <%= Post.all.count%> posts in our blog</h3>
+		
+		<%= button_to "Sign up", new_user_registration_path, :method => :get %>
+		<em>For an account</em><br/><br/> 
+		
+		<%= button_to "Sign In", new_user_session_path, :method => :get %>
+		<em>If you already have an account</em>
+	</center>
+<%end%>

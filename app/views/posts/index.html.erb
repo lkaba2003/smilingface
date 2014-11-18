@@ -1,0 +1,52 @@
+<%= link_to "Create New Post", new_post_path %>
+
+<% @post.each do |post| %>
+	<p>
+		<strong>Post:</strong> <%= post.content %><br/>
+		<strong>Created at:</strong> <%= post.created_at %><br/>
+		<strong>From:</strong> <%= post.user.email %><br/>
+		
+
+	</p>
+
+	<% if current_user == post.user %>
+		<p>
+			<%= link_to "edit", edit_post_path(post) %> |
+			<%= link_to "show", post_path(post) %> |
+			<%= link_to "delelte", post, method: :delete %>
+			
+		</p>
+	<%end%>
+
+	<% if current_user && post.user  != current_user %>
+		<% @relationship = current_user.relationships.where(following_id: post.user.id).first %>
+		<%= link_to image_tag(post.image_url.to_s, :width => 60, :class => "right", :style => "border-radius: 15px; border: 2px solid red; margin-left: 90%;" ), post_path(post) %><br/>
+
+		<% if @relationship.blank? %>
+			<%= form_for :relationship, url: relationships_path do |f| %>
+				<%= f.hidden_field :following_id, value: post.user.id %>
+				<%= f.submit 'follow' %>
+			<%end%>
+		<%else%>
+			<%= button_to "unfollow", @relationship, method: :delete %>
+		<%end%>
+	<%end%>
+
+<hr/>
+<%end%>
+
+
+<!--
+<% current_user.posts.each do |post| %>
+	<p>
+		<strong>Post:</strong> <%= post.content %><br/>
+		<strong>Created at:</strong> <%= post.created_at %><br/>
+		<strong>From:</strong> <%= post.user.email %><br/>
+		<%= link_to "edit", edit_post_path(post) %> |
+		<%= link_to "show", post_path(post) %> |
+		<%= link_to "delelte", post, method: :delete %>
+		<hr/>
+	</p>
+
+<%end%>
+-->
