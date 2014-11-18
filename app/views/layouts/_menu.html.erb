@@ -1,6 +1,7 @@
-<div class="menu" >
 
-	<% if current_user %>
+
+<% if current_user %>
+	<div class="menu" >
 		Welcome <%= current_user.first_name %> <%= current_user.last_name %><br/> 
 		<%= link_to "Sign Out", destroy_user_session_path, method: :delete %> | 
 		<%= link_to "Home", root_path %> | 
@@ -9,7 +10,8 @@
 	<%= link_to "Sign up", new_user_registration_path %> | 
 	<%= link_to "Sign In", new_user_session_path %> |
 	<%= link_to "Contact", static_pages_contact_path %>
-	<%end%>
+	</div>
+<%end%>
 
-</div>
+
 
