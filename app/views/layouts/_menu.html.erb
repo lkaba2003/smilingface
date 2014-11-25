@@ -8,14 +8,14 @@
 			<li class="pull-right"><%= link_to "Home", root_path %></li> 
 			<li class="pull-right"><%= link_to "Contact", static_pages_contact_path %></li>
 			<li class="pull-right"><%= link_to "View Posts", posts_path %></li>
-			<a class="brand" href="/home"><img src="/images/Brand.png" onmouseover="this.src='/images/Brand2.png'" onmouseout="this.src='/images/Brand.png'" /></a>
+			<a class="brand" href="/home"><img src="images/Brand.png" onmouseover="this.src='images/Brand2.png'" onmouseout="this.src='images/Brand.png'" /></a>
 		</ul>
 	<% else %>
 	<ul class="nav nav-tabs navbar navbar-inverse ">	
 		<li class="pull-right"><%= link_to "Sign up", new_user_registration_path %></li> 
 		<li class="pull-right"><%= link_to "Sign In", new_user_session_path %></li>
 		<li class="pull-right"><%= link_to "Contact", static_pages_contact_path %></li>
-		<a class="brand" href="/home"><img src="/images/Brand.png" onmouseover="this.src='/images/Brand2.png'" onmouseout="this.src='/images/Brand.png'" /></a>
+		<a class="brand" href="/home"><img src="images/Brand.png" onmouseover="this.src='images/Brand2.png'" onmouseout="this.src='images/Brand.png'" /></a>
 	</ul>
 	<%end%>
 
