@@ -10,6 +10,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'carrierwave'
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 
 
 group :doc do

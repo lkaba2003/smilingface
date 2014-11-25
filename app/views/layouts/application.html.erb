@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Smilingface</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+	<head>
+	  <title>Smilingface</title>
+	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body class="body">
+		
+		<div class="container wrap" >
+			<%= render "layouts/menu" %>
 
-<%= render "layouts/menu" %>
+			<div>
+				<p class="notice"><%= notice %></p>
+				<p class="alert"><%= alert %></p>
+			</div>
 
-<div>
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
-</div>
+			<%= yield %>
+			
+		</div>
 
-<%= yield %>
-
-</body>
+	</body>
 </html>

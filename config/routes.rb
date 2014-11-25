@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   get 'static_pages/contact'
+  get 'static_pages/home'
+  get 'relationships/following'
+  get 'relationships/follower'
 
   devise_for :users
   resources :posts
@@ -10,6 +13,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
    root 'static_pages#home'
+   get 'home' => 'static_pages#home'
+   
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

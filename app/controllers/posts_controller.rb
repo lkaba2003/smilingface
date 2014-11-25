@@ -31,7 +31,6 @@ class PostsController < ApplicationController
 			flash[:notice] = "Your post was successfully created" 
 			redirect_to posts_path
 		else
-			flash[:alert] = "Error. Your post was not save. Please try again"
 			render "new"
 		end
 	end
@@ -43,7 +42,6 @@ class PostsController < ApplicationController
 			flash[:notice] = "Your post was successfully updated"
 			redirect_to posts_path
 		else
-			flash[:alert] = "Error. Your post is not updated"
 			render "edit"
 		end
 	end	

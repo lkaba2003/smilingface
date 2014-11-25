@@ -6,4 +6,7 @@ class Post < ActiveRecord::Base
 	validates :content, presence: true
 
 	mount_uploader :image, ImageUploader
+	validates :image, :presence => {:width => 300, :height => 300}
+	validates :image, :presence => {:message => 'should be < 300 x 300'}
+	
 end

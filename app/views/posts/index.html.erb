@@ -1,39 +1,39 @@
-<%= link_to "Create New Post", new_post_path %>
+<%= link_to "Create New Post", new_post_path, :class => "btn btn-xs btn-black" %><br/><br/>
 
 <% @post.each do |post| %>
 	<p>
 		<strong>Post:</strong> <%= post.content %><br/>
 		<strong>Created at:</strong> <%= post.created_at %><br/>
 		<strong>From:</strong> <%= post.user.email %><br/>
-		
-
 	</p>
 
 	<% if current_user == post.user %>
-		<p>
-			<%= link_to "edit", edit_post_path(post) %> |
-			<%= link_to "show", post_path(post) %> |
-			<%= link_to "delelte", post, method: :delete %>
-			
-		</p>
+			<%= link_to "edit", edit_post_path(post), :class => "btn btn-xs btn-info" %> |
+			<%= link_to "delelte", post, method: :delete, :class => "btn btn-xs btn-danger", :data => { :confirm => "Are you sure?" } %>
 	<%end%>
+	
 
 	<% if current_user && post.user  != current_user %>
 		<% @relationship = current_user.relationships.where(following_id: post.user.id).first %>
-		<%= link_to image_tag(post.image_url.to_s, :width => 60, :class => "right", :style => "border-radius: 15px; border: 2px solid red; margin-left: 90%;" ), post_path(post) %><br/>
+		
 
 		<% if @relationship.blank? %>
 			<%= form_for :relationship, url: relationships_path do |f| %>
 				<%= f.hidden_field :following_id, value: post.user.id %>
 				<%= f.submit 'follow' %>
+				<%= link_to "show", post_path(post), :class => "btn btn-xs btn-success" %>
+				<%= link_to image_tag(post.image_url.to_s, :width => 60, :class => "right", :style => "border-radius: 15px; border: 2px solid red; margin-left: 90%;" ), post_path(post) %>
 			<%end%>
 		<%else%>
-			<%= button_to "unfollow", @relationship, method: :delete %>
+			<%= link_to "unfollow", @relationship, :class => "btn btn-xs btn-default", method: :delete %>
+			<%= link_to "show", post_path(post), :class => "btn btn-xs btn-success" %>
+			<%= link_to image_tag(post.image_url.to_s, :width => 60, :class => "right", :style => "border-radius: 15px; border: 1px solid #097284; margin-left: 90%;" ), post_path(post) %>
 		<%end%>
 	<%end%>
 
-<hr/>
+<hr style="border:1px solid #097284">
 <%end%>
+<%= link_to "Go back", root_path, :class => "btn btn-xs btn-black" %><br/><br/>
 
 
 <!--

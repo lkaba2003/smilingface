@@ -8,7 +8,9 @@
 	<strong>Post number:</strong> <%= current_user.posts.count %><br/>
 </em>
 
-<%= image_tag @post.image_url.to_s, :width => 200, :class => "right", :style => "margin-left: 300px;" %>
+<%= image_tag @post.image_url.to_s, :width => 200, :class => "right", :style => "margin-left: 50%; border-radius: 15px; border: 1px solid #097284; " %>
 
-<hr/>
-<%= button_to "Back", posts_path, :method => :get %>
+<hr style="border:1px solid #097284">
+<%= link_to "Back", posts_path, :method => :get, :class => "btn btn-xs btn-black" %><br/><br/>
+
+
