@@ -14,6 +14,7 @@ gem 'mini_magick'
 gem 'carrierwave'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+gem 'rails_12factor'
 
 
 group :doc do
