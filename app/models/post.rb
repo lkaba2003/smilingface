@@ -6,7 +6,15 @@ class Post < ActiveRecord::Base
 	validates :content, presence: true
 
 	mount_uploader :image, ImageUploader
-	validates :image, :presence => {:width => 300, :height => 300}
-	validates :image, :presence => {:message => 'should be < 300 x 300'}
+	
+	validates :image, :presence => {:message => 'Please Upload 250x250 Image'}
+
+	validate :image_size_validation, :if => "image?"
+
+	def image_size_validation
+	    if image.size > 30.kilobytes
+	      errors.add(:base, "Image should be 250x250 or less")
+	    end
+	 end
 	
 end
