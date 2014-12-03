@@ -8,8 +8,12 @@
 	</p>
 
 	<% if current_user == post.user %>
+
+
+			<%= link_to "show", post_path(post), :class => "btn btn-xs btn-success" %> |
 			<%= link_to "edit", edit_post_path(post), :class => "btn btn-xs btn-info" %> |
 			<%= link_to "delelte", post, method: :delete, :class => "btn btn-xs btn-danger", :data => { :confirm => "Are you sure?" } %>
+			<%= link_to image_tag(post.image_url.to_s, :width => 60, :class => "right", :style => "border-radius: 15px; border: 2px solid red; margin-left: 90%;" ), post_path(post) %>
 	<%end%>
 	
 
