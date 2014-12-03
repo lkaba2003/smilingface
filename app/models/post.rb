@@ -7,7 +7,7 @@ class Post < ActiveRecord::Base
 
 	mount_uploader :image, ImageUploader
 	
-	validates :image, :presence => {:message => 'Please Upload 250x250 Image'}
+	validates :image, :presence => {:message => ', Please Upload 250x250'}
 
 	validate :image_size_validation, :if => "image?"
 
